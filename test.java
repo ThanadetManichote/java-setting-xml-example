@@ -1,5 +1,4 @@
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 
@@ -24,10 +23,7 @@ public class JasperImageExample {
             String imagePath = "path/to/save/output.png";
             File imageFile = new File(imagePath);
 
-            JRPngExporter exporter = new JRPngExporter();
-            exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(imageFile));
-            exporter.exportReport();
+            JasperExportManager.exportReportToPdfFile(jasperPrint, imagePath);
 
             System.out.println("Image generated successfully at: " + imageFile.getAbsolutePath());
 
